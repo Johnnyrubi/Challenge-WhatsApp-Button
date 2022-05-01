@@ -9,6 +9,21 @@ const getAll = async (req, res, next) => {
     }
 };
 
+const getById = async (req, res, next) => {
+    try {
+        const { id } = req.params
+        console.log(id)
+        const result = await service.getById(id);
+        return res.status(200).json(result);
+    } catch (err) {
+        next(err);
+    }
+};
+
+
+
+
 module.exports = {
-    getAll
+    getAll,
+    getById
 };

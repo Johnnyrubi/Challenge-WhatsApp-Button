@@ -9,9 +9,9 @@ const PORT = 3000;
 
 app.get('/', (controller.getAll));
 
-/* app.get('/:id', ());
+app.get('/:id', (controller.getById));
 
-app.post('/', ());
+/* app.post('/', ());
 
 app.put('/:id', ());
 
