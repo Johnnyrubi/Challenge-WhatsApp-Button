@@ -12,7 +12,6 @@ const getAll = async (req, res, next) => {
 const getById = async (req, res, next) => {
     try {
         const { id } = req.params
-        console.log(id)
         const result = await service.getById(id);
         return res.status(200).json(result);
     } catch (err) {
@@ -20,10 +19,18 @@ const getById = async (req, res, next) => {
     }
 };
 
-
+const post = async (req, res, next) => {
+    try {
+        const result = await service.post(req.body);
+        return res.status(201).json(result)
+    } catch (err) {
+        next(err);
+    }
+};
 
 
 module.exports = {
     getAll,
-    getById
+    getById,
+    post
 };

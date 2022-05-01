@@ -11,9 +11,9 @@ app.get('/', (controller.getAll));
 
 app.get('/:id', (controller.getById));
 
-/* app.post('/', ());
+app.post('/', (controller.post));
 
-app.put('/:id', ());
+/* app.put('/:id', ());
 
 app.delete('/:id', ()); */
 
