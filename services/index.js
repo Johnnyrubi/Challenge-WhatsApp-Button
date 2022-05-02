@@ -7,7 +7,6 @@ const erro = (statusCode) => ({ statusCode });
 const getAll = async () => {
     try {
         const result = await Button.findAll();
-        console.log(result);
         return result
     } catch (e) {
         throw erro({ status: 500, message: "Erro Interno" });
@@ -31,6 +30,7 @@ const getById = async (id) => {
 
 
 const post = async ({ name, companyId, ownerId, statusId, config }) => {
+    validations.ifIsBoolean(statusId)
     try {
         await Button.create({ name, companyId, ownerId, statusId, config });
         const result = await Button.findAll({
@@ -45,6 +45,8 @@ const post = async ({ name, companyId, ownerId, statusId, config }) => {
 
 
 const update = async ( id, {  name, companyId, ownerId, statusId, config }) => {
+    validations.ifIsBoolean(statusId)
+    validations.ifExists(id);
     try {
         await Button.update({ name, companyId, ownerId, statusId, config }, {
             where: { id }
@@ -58,9 +60,28 @@ const update = async ( id, {  name, companyId, ownerId, statusId, config }) => {
     }
 }
 
+const exclude = async (id) => {
+    validations.ifExists(id);
+    try {
+        const result = await Button.findOne({
+            where: { id }
+        })
+        if (!result) {
+            throw erro({ status: 404, message: "Não encontrado" });
+        }
+        await Button.destroy({
+            where: { id }
+        })
+        return result;
+    } catch (e) {
+        throw erro({ status: 500, message: "Erro Interno"});
+    }
+};
+
 module.exports = {
     getAll,
     getById,
     post,
-    update
+    update,
+    exclude
 };

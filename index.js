@@ -6,7 +6,6 @@ const app = express();
 app.use(express.json());
 const PORT = 3000;
 
-
 app.get('/', (controller.getAll));
 
 app.get('/:id', (controller.getById));
@@ -15,7 +14,7 @@ app.post('/', (controller.post));
 
 app.put('/:id', (controller.update));
 
-/* app.delete('/:id', ()); */
+app.delete('/:id', (controller.exclude));
 
 app.use((erro, _req, res, _next) => {
     if(erro.statusCode) {
