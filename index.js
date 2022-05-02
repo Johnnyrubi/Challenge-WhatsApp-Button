@@ -13,9 +13,9 @@ app.get('/:id', (controller.getById));
 
 app.post('/', (controller.post));
 
-/* app.put('/:id', ());
+app.put('/:id', (controller.update));
 
-app.delete('/:id', ()); */
+/* app.delete('/:id', ()); */
 
 app.use((erro, _req, res, _next) => {
     if(erro.statusCode) {

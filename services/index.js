@@ -39,14 +39,28 @@ const post = async ({ name, companyId, ownerId, statusId, config }) => {
         })
         return result;
     } catch (e) {
-        throw erro({ status: 500, message: "Erro Interno"});
+        throw erro({ status: 500, message: "Erro Interno" });
     }
 };
 
 
+const update = async ( id, {  name, companyId, ownerId, statusId, config }) => {
+    try {
+        await Button.update({ name, companyId, ownerId, statusId, config }, {
+            where: { id }
+        });
+        const result = await Button.findOne({
+            where: { id }
+        })
+        return result;
+    } catch (e) {
+        throw erro({ status: 500, message: "usuario não encontrado" });
+    }
+}
 
 module.exports = {
     getAll,
     getById,
-    post
+    post,
+    update
 };
