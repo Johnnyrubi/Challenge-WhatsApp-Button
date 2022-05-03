@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon ./index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "testUniter": "echo \"Error: no test specified\" && exit 1",
+    "testInte": "jest ../tests/integrations.test.js",
+    "test": ""
   },
   "keywords": [],
   "author": "",
@@ -20,9 +22,7 @@
     "sqlite": "^4.1.1"
   },
   "devDependencies": {
-    "chai": "^4.3.6",
     "jest": "^28.0.2",
-    "mocha": "^9.2.2",
-    "sinon": "^13.0.2"
+    "supertest": "^6.2.3"
   }
 }
