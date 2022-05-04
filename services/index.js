@@ -7,9 +7,12 @@ const erro = (statusCode) => ({ statusCode });
 const getAll = async () => {
     try {
         const result = await Button.findAll();
+        if(!result|| result.length === 0) {
+            throw err
+        }
         return result
     } catch (e) {
-        throw erro({ status: 500, message: "Erro Interno" });
+        throw erro({ status: 404, message: "Nada encontrado" });
     }
 };
 
@@ -48,15 +51,18 @@ const update = async ( id, {  name, companyId, ownerId, statusId, config }) => {
     validations.ifIsBoolean(statusId)
     validations.ifExists(id);
     try {
-        await Button.update({ name, companyId, ownerId, statusId, config }, {
+        const updateButton = await Button.update({ name, companyId, ownerId, statusId, config }, {
             where: { id }
         });
         const result = await Button.findOne({
             where: { id }
         })
+        if (result === null) {
+            throw erro
+        }
         return result;
     } catch (e) {
-        throw erro({ status: 500, message: "usuario não encontrado" });
+        throw erro({ status: 404, message: "usuario não encontrado" });
     }
 }
 
@@ -66,15 +72,15 @@ const exclude = async (id) => {
         const result = await Button.findOne({
             where: { id }
         })
-        if (!result) {
-            throw erro({ status: 404, message: "Não encontrado" });
-        }
         await Button.destroy({
             where: { id }
         })
+        if (!result) {
+            throw erro
+        }
         return result;
     } catch (e) {
-        throw erro({ status: 500, message: "Erro Interno"});
+        throw erro({ status: 404, message: "Usuario não encontrado"});
     }
 };
 

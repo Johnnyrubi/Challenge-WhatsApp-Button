@@ -32,7 +32,7 @@ const update = async (req, res, next) => {
     try {
         const { id } = req.params
         const result = await service.update(id, req.body);
-        return res.status(204).json(result);
+        return res.status(200).json(result);
     } catch (err) {
         next(err);
     }
