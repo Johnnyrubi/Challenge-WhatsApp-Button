@@ -9,9 +9,6 @@ const {
     afterAll,
 } = require('@jest/globals');
 
-/* const app = require('../app.js');
-app.use(bodyParser.json())
- */
 describe('API Testing routes', () => {
     beforeAll(() => {
 /*         shell.exec('npx sequelize-cli db:drop');
@@ -103,5 +100,5 @@ describe('API Testing routes', () => {
           shell.exec('npx sequelize-cli db:drop');
           shell.exec('npx sequelize-cli db:create && npx sequelize-cli db:migrate');
           shell.exec('npx sequelize-cli db:seed:all');
-        });
+    });
 });

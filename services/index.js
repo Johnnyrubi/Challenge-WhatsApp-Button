@@ -8,11 +8,11 @@ const getAll = async () => {
     try {
         const result = await Button.findAll();
         if(!result|| result.length === 0) {
-            throw err
+            throw erro
         }
         return result
     } catch (e) {
-        throw erro({ status: 404, message: "Nada encontrado" });
+        throw erro({ status: 404, message: "Nenhum Button encontrado" });
     }
 };
 
@@ -23,7 +23,7 @@ const getById = async (id) => {
             where: { id }
         })
         if (!result) {
-            throw erro({ status: 404, message: "Não encontrado" });
+            throw erro({ status: 404, message: "Button não encontrado" });
         }
         return result;
     } catch (e) {

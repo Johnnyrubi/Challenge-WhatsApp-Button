@@ -1,16 +1,5 @@
 const erro = (statusCode) => ({ statusCode });
 
-const verificationId = (param) => {
-    ifExists(param);
-    ifIsNumber(param);
-};
-
-const ifIsNumber = (param) => {
-    if (!param || param === '') {
-        throw erro({ status: 400, message: `${param} precisa ser um numero` });
-    }
-};
-
 const ifExists = (param) => {
     if (!param || param === '') {
         throw erro({ status: 400, message: `${param} não pode ser vazio`});
@@ -31,9 +20,7 @@ const ifIsBoolean = (param) => {
 };
 
 module.exports = {
-    verificationId,
     ifIsBoolean,
     ifExists,
-    ifIsNumber,
     ifIsString
 };
