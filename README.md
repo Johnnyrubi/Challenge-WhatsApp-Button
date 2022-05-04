@@ -10,11 +10,8 @@ feito utilizando clean code e conceitos SOLID, uma API RESTfull, documentada e t
 # Versões:
 Node versão: v16.14.2
 
-Docker versão: 20.10.14
+MYSQL versão: v8.0.29 
 
-MYSQL versão: 
-
-# Docker
 
 # Baixando o Projeto:
 Baixe o Projeto na sua Maquina com o comando:
