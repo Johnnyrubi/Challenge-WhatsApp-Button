@@ -16,6 +16,7 @@ MYSQL versão: v8.0.29
 # Baixando o Projeto:
 Baixe o Projeto na sua Maquina com o comando:
    - `git clone git@github.com:Johnnyrubi/Challenge-API-Buttons.git`
+ 
 Entre na pasta, e na raiz do projeto execute:
   - `npm i`
 
@@ -28,6 +29,7 @@ lembrando que o nome do banco de dados não pode ser modificado!
 
 # Como rodar:
 Agora execute o seguinte Script(este comando irá rodar e colocar no ar o nosso banco de dados):
+
     -`npm run prestart`
 Depois execute:
   - `npm run seed`
